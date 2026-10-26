@@ -36,3 +36,14 @@ You can find the same information in the [contributing guide.](https://github.co
 
 ## Donations
 I made this in my spare time, and it's hosted on GitHub (which means I don't have any hosting costs), but if you enjoyed the game and feel like buying me coffee, you can donate at my BTC address: `1Ec6onfsQmoP9kkL3zkpB6c5sA4PVcXU2i`. Thank you very much!
+
+## Remix notes (onnisaravuo)
+This fork adds a neon/glass theme, a local top-10 scoreboard and a dancing cow.
+It is published with GitHub Pages from the `oma-kokeilu` branch.
+
+Before committing a change to CSS or JS, refresh the cache-busting version tags
+so visitors get the new files right away:
+
+```
+node tools/bump-version.js
+```
