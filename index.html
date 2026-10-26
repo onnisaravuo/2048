@@ -23,6 +23,52 @@
   <div class="container">
     <div class="heading">
       <h1 class="title">2048</h1>
+      <div class="cow-stage" aria-hidden="true">
+        <span class="cow-bubble"></span>
+        <svg class="cow" viewBox="0 0 100 120">
+          <g class="cow-tail">
+            <path d="M70 84 Q88 80 86 64" fill="none" stroke="#1f2937" stroke-width="3" stroke-linecap="round"/>
+            <circle cx="86" cy="62" r="4" fill="#1f2937"/>
+          </g>
+          <g class="cow-leg cow-leg-left">
+            <rect x="36" y="96" width="11" height="18" rx="5" fill="#fff" stroke="#1f2937" stroke-width="3"/>
+            <rect x="35" y="109" width="13" height="7" rx="3" fill="#1f2937"/>
+          </g>
+          <g class="cow-leg cow-leg-right">
+            <rect x="53" y="96" width="11" height="18" rx="5" fill="#fff" stroke="#1f2937" stroke-width="3"/>
+            <rect x="52" y="109" width="13" height="7" rx="3" fill="#1f2937"/>
+          </g>
+          <ellipse cx="50" cy="78" rx="24" ry="27" fill="#fff" stroke="#1f2937" stroke-width="3"/>
+          <path d="M30 70 Q36 60 44 66 Q42 76 32 78 Z" fill="#1f2937"/>
+          <path d="M62 86 Q72 82 72 92 Q66 100 60 94 Z" fill="#1f2937"/>
+          <ellipse cx="50" cy="84" rx="13" ry="15" fill="#fbcfe8"/>
+          <g class="cow-arm cow-arm-left">
+            <line x1="31" y1="68" x2="15" y2="50" stroke="#1f2937" stroke-width="11" stroke-linecap="round"/>
+            <line x1="31" y1="68" x2="15" y2="50" stroke="#fff" stroke-width="6" stroke-linecap="round"/>
+            <circle cx="15" cy="50" r="5" fill="#1f2937"/>
+          </g>
+          <g class="cow-arm cow-arm-right">
+            <line x1="69" y1="68" x2="85" y2="50" stroke="#1f2937" stroke-width="11" stroke-linecap="round"/>
+            <line x1="69" y1="68" x2="85" y2="50" stroke="#fff" stroke-width="6" stroke-linecap="round"/>
+            <circle cx="85" cy="50" r="5" fill="#1f2937"/>
+          </g>
+          <g class="cow-head">
+            <path d="M33 22 Q26 10 30 6 Q34 14 38 20 Z" fill="#fde68a" stroke="#1f2937" stroke-width="2"/>
+            <path d="M67 22 Q74 10 70 6 Q66 14 62 20 Z" fill="#fde68a" stroke="#1f2937" stroke-width="2"/>
+            <ellipse cx="25" cy="30" rx="9" ry="5" transform="rotate(-20 25 30)" fill="#fff" stroke="#1f2937" stroke-width="2.5"/>
+            <ellipse cx="75" cy="30" rx="9" ry="5" transform="rotate(20 75 30)" fill="#fff" stroke="#1f2937" stroke-width="2.5"/>
+            <ellipse cx="50" cy="36" rx="22" ry="19" fill="#fff" stroke="#1f2937" stroke-width="3"/>
+            <path d="M56 19 Q68 20 70 32 Q62 34 56 26 Z" fill="#1f2937"/>
+            <path d="M32 30 Q37 24 45 30" fill="#a78bfa" stroke="#1f2937" stroke-width="2"/>
+            <path d="M55 30 Q63 24 68 30" fill="#a78bfa" stroke="#1f2937" stroke-width="2"/>
+            <line x1="45" y1="29" x2="55" y2="29" stroke="#1f2937" stroke-width="2"/>
+            <ellipse cx="50" cy="45" rx="15" ry="9" fill="#f9a8d4" stroke="#1f2937" stroke-width="2.5"/>
+            <ellipse cx="44" cy="45" rx="2.5" ry="3" fill="#1f2937"/>
+            <ellipse cx="56" cy="45" rx="2.5" ry="3" fill="#1f2937"/>
+            <path d="M45 51 Q50 54 55 51" fill="none" stroke="#1f2937" stroke-width="1.8" stroke-linecap="round"/>
+          </g>
+        </svg>
+      </div>
       <div class="scores-container">
         <div class="score-container">0</div>
         <div class="best-container">0</div>
@@ -136,6 +182,7 @@
   <script src="js/local_storage_manager.js"></script>
   <script src="js/game_manager.js"></script>
   <script src="js/scoreboard.js"></script>
+  <script src="js/dancing_cow.js"></script>
   <script src="js/application.js"></script>
 </body>
 </html>

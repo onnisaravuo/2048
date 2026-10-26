@@ -73,6 +73,148 @@ h1.title {
   gap: 10px;
 }
 
+/* ---------- Dancing cow ---------- */
+
+.cow-stage {
+  position: relative;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  min-width: 0;
+}
+
+.cow {
+  width: 84px;
+  height: 100px;
+  overflow: visible;
+  filter: drop-shadow(0 0 10px rgba(167, 139, 250, 0.55));
+  transform-origin: 50% 100%;
+  animation: cow-groove 0.9s ease-in-out infinite;
+}
+
+.cow * {
+  transform-box: view-box;
+}
+
+@keyframes cow-groove {
+  0%, 100% { transform: translateY(0) rotate(-6deg); }
+  25%      { transform: translateY(-6px) rotate(0deg); }
+  50%      { transform: translateY(0) rotate(6deg); }
+  75%      { transform: translateY(-6px) rotate(0deg); }
+}
+
+.cow-head {
+  transform-origin: 50px 55px;
+  animation: cow-head-bob 0.45s ease-in-out infinite alternate;
+}
+
+@keyframes cow-head-bob {
+  from { transform: rotate(-8deg); }
+  to   { transform: rotate(8deg); }
+}
+
+.cow-arm-left {
+  transform-origin: 31px 68px;
+  animation: cow-wave-left 0.9s ease-in-out infinite;
+}
+
+.cow-arm-right {
+  transform-origin: 69px 68px;
+  animation: cow-wave-right 0.9s ease-in-out infinite;
+}
+
+/* Arms take turns swinging up over the head */
+@keyframes cow-wave-left {
+  0%, 100% { transform: rotate(-10deg); }
+  50%      { transform: rotate(55deg); }
+}
+
+@keyframes cow-wave-right {
+  0%, 100% { transform: rotate(-55deg); }
+  50%      { transform: rotate(10deg); }
+}
+
+.cow-leg-left  { animation: cow-step 0.45s ease-in-out infinite alternate; }
+.cow-leg-right { animation: cow-step 0.45s ease-in-out infinite alternate-reverse; }
+
+@keyframes cow-step {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-4px); }
+}
+
+.cow-tail {
+  transform-origin: 70px 84px;
+  animation: cow-tail-wag 0.3s ease-in-out infinite alternate;
+}
+
+@keyframes cow-tail-wag {
+  from { transform: rotate(-15deg); }
+  to   { transform: rotate(20deg); }
+}
+
+/* Merge celebration: jump and spin (restarted from JS on every merge) */
+.cow.cow-hype {
+  animation: cow-hype 0.6s cubic-bezier(.3, 1.4, .5, 1);
+}
+
+@keyframes cow-hype {
+  0%   { transform: translateY(0) rotate(0deg) scale(1); }
+  45%  { transform: translateY(-22px) rotate(200deg) scale(1.12); }
+  100% { transform: translateY(0) rotate(360deg) scale(1); }
+}
+
+.cow.cow-sad {
+  animation: cow-sad 2s ease-in-out infinite;
+  filter: drop-shadow(0 0 10px rgba(96, 165, 250, 0.5)) grayscale(0.4);
+}
+
+.cow.cow-sad .cow-arm,
+.cow.cow-sad .cow-leg,
+.cow.cow-sad .cow-head {
+  animation: none;
+}
+
+@keyframes cow-sad {
+  0%, 100% { transform: translateY(0) rotate(-3deg); }
+  50%      { transform: translateY(3px) rotate(3deg); }
+}
+
+.cow-bubble {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  z-index: 5;
+  padding: 4px 10px;
+  border-radius: 12px;
+  white-space: nowrap;
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(135deg, #7c3aed, #db2777);
+  box-shadow: 0 4px 16px rgba(219, 39, 119, 0.5);
+  opacity: 0;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.cow-bubble.show {
+  animation: cow-bubble 1.4s ease-out both;
+}
+
+@keyframes cow-bubble {
+  0%   { opacity: 0; transform: translate(-50%, 10px) scale(0.6); }
+  15%  { opacity: 1; transform: translate(-50%, 0) scale(1.1); }
+  25%  { transform: translate(-50%, 0) scale(1); }
+  80%  { opacity: 1; }
+  100% { opacity: 0; transform: translate(-50%, -14px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cow, .cow * {
+    animation: none !important;
+  }
+}
+
 .score-container, .best-container {
   position: relative;
   min-width: 92px;
@@ -648,6 +790,20 @@ hr {
   h1.title {
     font-size: 44px;
     letter-spacing: -2px;
+  }
+
+  .heading {
+    gap: 6px;
+  }
+
+  .cow {
+    width: 52px;
+    height: 62px;
+  }
+
+  .cow-bubble {
+    font-size: 12px;
+    top: -18px;
   }
 
   .score-container, .best-container {

@@ -118,7 +118,16 @@ HTMLActuator.prototype.updateScore = function (score) {
     addition.textContent = "+" + difference;
 
     this.scoreContainer.appendChild(addition);
+
+    // Skip the first update, which only restores a saved game's score
+    if (this.scoreShown) {
+      document.dispatchEvent(new CustomEvent("score-added", {
+        detail: { points: difference }
+      }));
+    }
   }
+
+  this.scoreShown = true;
 };
 
 HTMLActuator.prototype.updateBestScore = function (bestScore) {
