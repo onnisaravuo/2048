@@ -32,6 +32,7 @@
     <div class="above-game">
       <p class="game-intro">Join the numbers and get to the <strong>2048 tile!</strong></p>
       <div class="button-row">
+        <a class="scoreboard-button">🏆 Scoreboard</a>
         <a class="restart-button">New Game</a>
       </div>
     </div>
@@ -90,6 +91,41 @@
     </p>
   </div>
 
+  <div class="modal-overlay" hidden>
+    <div class="modal scoreboard-panel" role="dialog" aria-labelledby="scoreboard-title" hidden>
+      <button class="modal-close" aria-label="Close">×</button>
+      <h2 id="scoreboard-title">🏆 Top 10</h2>
+      <div class="scoreboard-header">
+        <span class="rank">#</span>
+        <span class="name">Name</span>
+        <span class="score">Score</span>
+        <span class="max-tile">Best tile</span>
+        <span class="date">Date</span>
+      </div>
+      <ol class="scoreboard-list"></ol>
+      <div class="scoreboard-footer">
+        <button class="clear-scores-button">Clear scoreboard</button>
+        <div class="clear-confirm" hidden>
+          <span>Delete all scores?</span>
+          <button class="clear-yes">Yes, delete</button>
+          <button class="clear-no">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal name-entry-panel" role="dialog" aria-labelledby="name-entry-title" hidden>
+      <h2 id="name-entry-title">New high score! 🎉</h2>
+      <p class="name-entry-text"></p>
+      <form class="name-entry-form">
+        <input class="name-input" type="text" maxlength="12" placeholder="Your name" autocomplete="off">
+        <div class="name-entry-buttons">
+          <button type="submit" class="primary">Save</button>
+          <button type="button" class="modal-close">Skip</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
   <script src="js/bind_polyfill.js"></script>
   <script src="js/classlist_polyfill.js"></script>
   <script src="js/animframe_polyfill.js"></script>
@@ -99,6 +135,7 @@
   <script src="js/tile.js"></script>
   <script src="js/local_storage_manager.js"></script>
   <script src="js/game_manager.js"></script>
+  <script src="js/scoreboard.js"></script>
   <script src="js/application.js"></script>
 </body>
 </html>

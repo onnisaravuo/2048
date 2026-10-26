@@ -51,6 +51,13 @@ KeyboardInputManager.prototype.listen = function () {
 
   // Respond to direction keys
   document.addEventListener("keydown", function (event) {
+    // Don't steal keys while typing a name or while a dialog is open
+    var tag = event.target.tagName;
+    if (tag === "INPUT" || tag === "TEXTAREA" ||
+        document.body.classList.contains("modal-open")) {
+      return;
+    }
+
     var modifiers = event.altKey || event.ctrlKey || event.metaKey ||
                     event.shiftKey;
     var mapped    = map[event.which];

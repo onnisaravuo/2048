@@ -27,6 +27,7 @@ HTMLActuator.prototype.actuate = function (grid, metadata) {
     if (metadata.terminated) {
       if (metadata.over) {
         self.message(false); // You lose
+        self.announceGameOver(grid, metadata.score);
       } else if (metadata.won) {
         self.message(true); // You win!
       }
@@ -130,6 +131,19 @@ HTMLActuator.prototype.message = function (won) {
 
   this.messageContainer.classList.add(type);
   this.messageContainer.getElementsByTagName("p")[0].textContent = message;
+};
+
+// Tell listeners (e.g. the scoreboard) the final score and biggest tile
+HTMLActuator.prototype.announceGameOver = function (grid, score) {
+  var maxTile = 0;
+
+  grid.eachCell(function (x, y, tile) {
+    if (tile && tile.value > maxTile) maxTile = tile.value;
+  });
+
+  document.dispatchEvent(new CustomEvent("game-over", {
+    detail: { score: score, maxTile: maxTile }
+  }));
 };
 
 HTMLActuator.prototype.clearMessage = function () {
